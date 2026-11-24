@@ -1,0 +1,14 @@
+.dart_tool/
+.idea/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+.packages
+pubspec.lock
+
+# Secretos: NUNCA subir
+*.jks
+*.keystore
+android/key.properties
+**/service-account*.json
