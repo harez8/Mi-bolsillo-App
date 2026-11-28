@@ -76,59 +76,12 @@ lib/
 assets/images/logo.png
 test/widget_test.dart
 ```
-
-## 5. Configurar Firebase
-
-1. En la [consola de Firebase](https://console.firebase.google.com) crea un proyecto y activa **Authentication → Método de acceso → Correo electrónico/contraseña**.
-2. Instala las herramientas (una sola vez): `dart pub global activate flutterfire_cli`.
-3. En la carpeta del proyecto: `flutterfire configure` (elige tu proyecto y la plataforma Android). Esto reemplaza `lib/firebase_options.dart` y crea `android/app/google-services.json`.
-4. Si el compilador pide `minSdk`, súbelo a **23** en `android/app/build.gradle(.kts)`.
-
-> `google-services.json` y `firebase_options.dart` contienen identificadores públicos del cliente (no son contraseñas) y se incluyen para que el proyecto se pueda ejecutar. **No** se suben claves de firma (`*.jks`, `key.properties`) ni cuentas de servicio; el `.gitignore` los excluye.
-
-## 6. Instalación y ejecución (modo desarrollo)
-
-```bash
-flutter create . --project-name mi_bolsillo --org co.edu.pascualbravo   # solo la primera vez
-flutter pub get
-dart run flutter_launcher_icons   # genera el ícono de la app desde assets/images/logo.png
-flutter run                       # emulador Android o dispositivo conectado
-flutter test                      # pruebas de la lógica
-```
-
-## 7. Generar la APK
-
-**Requisitos:** Flutter SDK, Android SDK (se instala con Android Studio), Firebase ya configurado (sección 5) y un emulador o celular Android para probar.
-
-**Permiso de internet en release:** en `android/app/src/main/AndroidManifest.xml`, dentro de `<manifest>` y antes de `<application>`, agrega
-`<uses-permission android:name="android.permission.INTERNET"/>`. Sin él, el login puede funcionar en debug y fallar en la APK instalada. En el mismo archivo cambia `android:label` a `Mi Bolsillo`.
-
-**Comandos:**
-
-```bash
-flutter clean
-flutter pub get
-flutter build apk --release
-```
-
-**Ubicación de la APK generada:** `build/app/outputs/flutter-apk/app-release.apk`. La copio a `entrega/app.apk` para subirla al repositorio.
-
 **Instalación:**
 - Emulador o celular conectado por USB (con depuración USB activa): `adb install -r entrega/app.apk`
 - En el emulador también se puede arrastrar el archivo a la ventana. En un celular, copiar el archivo y abrirlo, permitiendo "instalar apps de orígenes desconocidos".
 
 **Resultado de la prueba** _(completar con lo que realmente observes)_:
 
-| Prueba | Resultado |
-|---|---|
-| La APK se instala y abre | _[ ]_ |
-| Registro de cuenta nueva | _[ ]_ |
-| Inicio de sesión con credenciales válidas | _[ ]_ |
-| Credenciales inválidas muestran mensaje de error | _[ ]_ |
-| Cierre de sesión vuelve al login | _[ ]_ |
-| Agregar un gasto (con validación de monto vacío/negativo) | _[ ]_ |
-| Cerrar y abrir la app conserva los datos | _[ ]_ |
-| Dispositivo/emulador y versión de Android usados | _[ ]_ |
 
 ### APK vs. paquete para Google Play
 
@@ -147,9 +100,9 @@ flutter build apk --release
 
 ## 9. Captura de pantalla
 
-_[Pega aquí tu captura: `![Captura](entrega/capturas/principal.png)`]_
+
 
 ## 10. Uso de IA
 
 
-Usé **Claude (Anthropic)** como apoyo para generar una primera versión del código (incluida la autenticación con Firebase) y de este README. Revisé el código, lo ejecuté y puedo explicar y modificar cualquier parte en vivo.
+Usé **Claude (Anthropic)** como apoyo para generar una primera versión del código (incluida la autenticación con Firebase) y de este README. Revisé el código, lo ejecuté.
